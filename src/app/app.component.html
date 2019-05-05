@@ -1,0 +1,18 @@
+
+
+
+<ul>
+  <li *ngFor="let x of menus">{{x}}</li>
+</ul>
+
+<p>Nom : {{personne.nom | uppercase}}</p>
+<p>Prénom : {{personne.prenom}}</p>
+<p>Age : {{personne.age}}</p>
+
+
+<input type="text" #langage> <button class="btn-primary" (click)="add(langage.value)">Add</button>
+<br><br>
+
+<label for="">{{nom}}</label>
+
+<router-outlet></router-outlet>

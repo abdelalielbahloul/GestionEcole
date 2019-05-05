@@ -1,0 +1,131 @@
+
+<p></p>
+<p></p>
+<div class="card border-success" >
+    <div class="card-header bg-transparent border-success">Rechreche</div>
+    <div class="card-body text-success">
+        <select class="form-control form-control-lg" #l (change)="affiche(l.selectedIndex,l.value)">
+            <option value="*">Tous les filières</option>
+            <option *ngFor="let z of listF">{{z}}</option>
+          </select>
+          <div class="form-group">
+              <label for="formGroupExampleInput">Rechreche</label>
+              <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+            </div>
+     
+    </div>
+    
+  </div>
+<p>
+    <a class="btn btn-success" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      Link with href
+    </a>
+  
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+        <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Code</label>
+              <input type="number" #code class="form-control" id="exampleInputEmail1" placeholder="Code"/>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Nom</label>
+              <input type="text" #nom class="form-control" id="exampleInputPassword1" placeholder="Nom">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword2">Prénom</label>
+                <input type="text" #prenom class="form-control" id="exampleInputPassword2" placeholder="Prénom">
+              </div>
+
+              <div class="form-group">
+                  <label for="exampleInputPassword3">Filière</label>
+                  <input type="text" #fil class="form-control" id="exampleInputPassword3" placeholder="Filiere">
+                </div>
+            
+          </form>
+    </div>
+    
+    <button class="btn btn-primary" (click)="addStag(code.value,nom.value,prenom.value,fil.value)" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+       Sauvegarder
+      </button>
+  </div>
+
+  <div class="card text-white bg-info" >
+      <div class="card-header">Liste des Stagiaires ({{listS.length}})</div>
+      <div class="card-body">
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Code</th>
+                  <th scope="col">Nom</th>
+                  <th scope="col">Prénom</th>
+                  <th scope="col">Filiere</th>
+                  <th colspan="2">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let x of listS">
+                  <th scope="row">{{x.code}}</th>
+                  <td>{{x.nom}}</td>
+                  <td>{{x.prenom}}</td>
+                  <td>{{x.filiere}}</td>
+                  <td colspan="2"><button class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" (click)="get(x)">Edit</button>&nbsp;&nbsp;
+                    <button class="btn btn-danger" (click)="deleteStag(x)">Delete</button></td>
+                </tr>
+               
+                
+              </tbody>
+            </table>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modification d'un stagiaire</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="card card-body">
+                    <form>
+                        <div class="form-group">
+                            
+                          <label for="exampleInputEmail1">Code</label>
+                          <input type="number" disabled [value]="v.code" #code1 name="code"  class="form-control" id="exampleInputEmail1" placeholder="Code"/>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Nom</label>
+                          <input type="text" [value]="v.nom" #nom1  class="form-control" id="exampleInputPassword1" placeholder="Nom">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword2">Prénom</label>
+                            <input type="text" [value]="v.prenom" #prenom1 class="form-control" id="exampleInputPassword2" placeholder="Prénom">
+                          </div>
+            
+                          <div class="form-group">
+                              <label for="exampleInputPassword3">Filière</label>
+                              <input type="text" [value]="v.filiere" #fil1 class="form-control" id="exampleInputPassword3" placeholder="Filiere">
+                            </div>
+                        
+                      </form>
+                </div>
+                
+               
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" (click)="updateStag(code1.value,nom1.value,prenom1.value,fil1.value)" type="button" data-dismiss="modal"  >
+                  Sauvegarder
+                 </button>
+            </div>
+          </div>
+        </div>
+      </div>

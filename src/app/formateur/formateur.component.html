@@ -1,0 +1,16 @@
+<p>
+        <div class="card border-success" >
+                <div class="card-header bg-transparent border-success">Rechreche</div>
+                <div class="card-body text-success">
+                    <select class="form-control form-control-lg" #l (change)="affiche(l.selectedIndex,l.value)">
+                        <option value="*">Tous les filières</option>
+                        <option *ngFor="let z of listF">{{z}}</option>
+                      </select>
+                      <div class="form-group">
+                          <label for="formGroupExampleInput">Rechreche</label>
+                          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                        </div>
+                 
+                </div>
+                
+              </div>
